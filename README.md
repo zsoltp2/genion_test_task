@@ -42,12 +42,12 @@ php artisan serve
 npm run dev
 </pre>
 
-Important: You must run <strong>npm run dev</strong> for styling to work properly via Vite.
+Important: You must run <strong>npm run dev</strong> for the styling to work properly via Vite.
 
 <h1>
     First User Login
 </h1>
-After registering the first user, you need to manually activate them in the database for login to work. Run the following SQL:
+After registering the first user, you need to manually activate them in the database for login to work. Make the changes directly in the database (localhost/phpmyadmin) or run the following SQL command:
 
 <pre>
 UPDATE users SET is_admin = 1, is_accepted_request = 1 WHERE id = 1;
