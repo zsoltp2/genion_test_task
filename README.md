@@ -1,6 +1,6 @@
 <h1>Setup & Development</h1>
 
-This my test task for Genion, it is a Laravel-based web application using MySQL, Vite, and Tailwind CSS.
+This my test task for Genion, it is a Laravel-based web application using MySQL (local server), Vite, and Tailwind CSS.
 
 Requirements
 PHP 8.1+
