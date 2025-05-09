@@ -11,15 +11,10 @@ MySQL (local server)
 <h1>Installing</h1>
 <pre>
 git clone https://github.com/zsoltp2/genion_test_task.git 
-    
 cd genion
-    
 composer install
-    
-npm install
-    
-cp .env.example .env
-    
+npm install 
+cp .env.example .env 
 php artisan key:migrate
 </pre>
 
@@ -52,6 +47,7 @@ Important: You must run <strong>npm run dev</strong> for styling to work properl
 <h1>
     First User Login
 </h1>
+After registering the first user, you need to manually activate them in the database for login to work. Run the following SQL:
 
 <pre>
 UPDATE users SET is_admin = 1, is_accepted_request = 1 WHERE id = 1;
