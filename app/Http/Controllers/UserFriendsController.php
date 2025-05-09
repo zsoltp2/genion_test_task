@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserFriends;
+use App\Notifications\AcceptedRequestNotification;
 use App\Notifications\FriendRequestNotification;
+use App\Notifications\RejectedRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,8 +43,6 @@ class UserFriendsController extends Controller
     }
 
 
-
-    // Send a friend request
     public function friendsRequests(User $user)
     {
         $sender_id = Auth::id();
@@ -83,18 +83,27 @@ class UserFriendsController extends Controller
         $friendRequest->status = 'accepted';
         $friendRequest->save();
 
+        $user = User::find($friendRequest->user_id);
+        $requested_friend = User::find($friendRequest->friend_id);
+
+        $user->notify(new AcceptedRequestNotification($requested_friend->name));
+
         return back()->with('success', 'Friend request accepted!');
     }
 
     public function rejectFriendRequest(UserFriends $friendRequest)
     {
-        // Only the receiver can reject the request
         if ($friendRequest->friend_id !== Auth::id()) {
             return back()->with('error', 'You are not the recipient of this request.');
         }
 
         $friendRequest->status = 'rejected';
         $friendRequest->delete();
+
+        $user = User::find($friendRequest->user_id);
+        $requested_friend = User::find($friendRequest->friend_id);
+
+        $user->notify(new RejectedRequestNotification($requested_friend->name));
 
         return back()->with('success', 'Friend request rejected.');
     }
