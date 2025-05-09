@@ -11,7 +11,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
     protected $fillable = [
         'name',
         'email',
@@ -21,6 +20,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'is_admin'
     ];
 
     protected function casts(): array
@@ -32,7 +32,26 @@ class User extends Authenticatable
     }
 
     public function friends(): HasMany {
-        return $this->hasMany(User::class, 'id', 'id');
+        return $this->hasMany(UserFriends::class, 'user_id');
+    }
+
+    public function friendOf()
+    {
+        return $this->hasMany(UserFriends::class, 'friend_id');
+    }
+
+    public function scopeUnaccepted($query) {
+        return $query->where('is_accepted_request', false);
+    }
+
+    public function sentRequests()
+    {
+        return $this->hasMany(UserFriends::class, 'user_id');
+    }
+
+    public function receivedRequests()
+    {
+        return $this->hasMany(UserFriends::class, 'friend_id')->where('status', 'sent');
     }
 
 }

@@ -14,15 +14,12 @@
     @endif
 </head>
 <body class="min-h-screen bg-gradient-to-b from-indigo-500 to-sky-500 text-[#1b1b18]">
-
-<!-- Navbar -->
 <header class="w-full">
     <x-navbar></x-navbar>
 </header>
 
-<!-- Main content -->
 <main class="p-6">
-
+    {{$slot}}
 </main>
 
 </body>
