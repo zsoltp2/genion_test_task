@@ -48,7 +48,6 @@ Important: You must run <strong>npm run dev</strong> for the styling to work pro
     First User Login
 </h1>
 After registering the first user, you need to manually activate them in the database for login to work. Make the changes directly in the database (localhost/phpmyadmin) or run the following SQL command:
-
 <pre>
 UPDATE users SET is_admin = 1, is_accepted_request = 1 WHERE id = 1;
 </pre>
