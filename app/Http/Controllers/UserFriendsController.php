@@ -49,7 +49,6 @@ class UserFriendsController extends Controller
         $receiver_id = $user->id;
 
         $receiver = User::find($receiver_id);
-        $receiver->notify(new FriendRequestNotification());
 
         if ($sender_id == $receiver_id) {
             return back()->with('error', 'You cannot send a friend request to yourself!');
