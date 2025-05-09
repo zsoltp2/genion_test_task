@@ -53,4 +53,4 @@ After registering the first user, you need to manually activate them in the data
 UPDATE users SET is_admin = 1, is_accepted_request = 1 WHERE id = 1;
 </pre>
 
-<h2>If you followed these steps, you can start making accounts, accepting them with your admin account and send friend requests!</h2>
+<strong>If you followed these steps, you can start making accounts, accepting them with your admin account and send friend requests!</strong>
