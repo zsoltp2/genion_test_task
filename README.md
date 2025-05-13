@@ -15,7 +15,7 @@ cd genion_test_task
 composer install
 npm install 
 cp .env.example .env 
-php artisan key:migrate
+php artisan key:generate
 </pre>
 
 
