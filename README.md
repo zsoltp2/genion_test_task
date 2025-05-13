@@ -11,7 +11,7 @@ MySQL (local server)
 <h1>Installing</h1>
 <pre>
 git clone https://github.com/zsoltp2/genion_test_task.git 
-cd genion
+cd genion_test_task
 composer install
 npm install 
 cp .env.example .env 
