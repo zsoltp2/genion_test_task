@@ -12,9 +12,13 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('notifications', Auth::user() ? Auth::user()->unreadNotifications : []);
+            $notifications = [];
+
+            if (Auth::check()) {
+                $notifications = Auth::user()->unreadNotifications;
+            }
+
+            $view->with('notifications', $notifications);
         });
     }
-
 }
-
