@@ -19,7 +19,7 @@ php artisan key:generate
 </pre>
 
 
-Update your .env file with your MySQL credentials: (Or create a MySQL database with the following name)
+Update your .env file with your MySQL credentials: (Or create a MySQL database with the following name: "genion_test")
 <pre>
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
